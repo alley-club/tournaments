@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/schedule/static/css/main.d161b48c.css",
+    "main.js": "/schedule/static/js/main.5ae592ba.js",
+    "static/media/favicon.ico": "/schedule/static/media/favicon.043023232a7bf622199e.ico",
+    "index.html": "/schedule/index.html",
+    "main.d161b48c.css.map": "/schedule/static/css/main.d161b48c.css.map",
+    "main.5ae592ba.js.map": "/schedule/static/js/main.5ae592ba.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d161b48c.css",
+    "static/js/main.5ae592ba.js"
+  ]
+}
