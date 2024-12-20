@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
+import logo from './favicon.ico';
 
 const ChessClub = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -7,6 +8,8 @@ const ChessClub = () => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme === 'dark';
   });
+
+  <img src={logo} alt="Logo" />;
 
   // Эффект для сохранения темы при её изменении
   useEffect(() => {
