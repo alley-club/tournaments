@@ -1,8 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
 
 const ChessClub = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Пытаемся получить сохраненную тему из localStorage
+    const savedTheme = localStorage.getItem('theme');
+    // Возвращаем true если была сохранена темная тема, false если светлая или ничего не сохранено
+    return savedTheme === 'dark';
+  });
+
+  // Эффект для сохранения темы при её изменении
+  useEffect(() => {
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+    // Добавляем или удаляем класс dark для body
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   const toggleTheme = () => {
     setDarkMode(!darkMode);
@@ -16,6 +32,7 @@ const ChessClub = () => {
         <button
           onClick={toggleTheme}
           className="fixed top-4 right-4 p-2 rounded-full bg-opacity-20 bg-white hover:bg-opacity-30 transition-all duration-300"
+          aria-label={darkMode ? 'Включить светлую тему' : 'Включить тёмную тему'}
         >
           {darkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
         </button>
@@ -43,7 +60,7 @@ const ChessClub = () => {
             Добро пожаловать в Шахматный клуб ВА
           </h2>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto">
-            Дегенерируйте играя шахматы
+          Дегенерируйте играя шахматы
           </p>
         </div>
       </section>
