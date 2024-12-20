@@ -8,6 +8,7 @@ const Schedule = () => {
     return savedTheme === 'dark';
   });
 
+
   useEffect(() => {
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
     if (darkMode) {

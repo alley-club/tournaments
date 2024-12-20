@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logo from './favicon.ico';
 
 const Participants = () => {
   const [darkMode, setDarkMode] = useState(() => {
