@@ -5,14 +5,12 @@ const ChessClub = () => {
   const [darkMode, setDarkMode] = useState(() => {
     // Пытаемся получить сохраненную тему из localStorage
     const savedTheme = localStorage.getItem('theme');
-    // Возвращаем true если была сохранена темная тема, false если светлая или ничего не сохранено
     return savedTheme === 'dark';
   });
 
   // Эффект для сохранения темы при её изменении
   useEffect(() => {
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    // Добавляем или удаляем класс dark для body
     if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {
@@ -40,13 +38,18 @@ const ChessClub = () => {
 
       <nav className={`${darkMode ? 'bg-gray-700' : 'bg-blue-800'} py-4 transition-colors duration-300`}>
         <ul className="flex justify-center gap-8 flex-wrap">
-          {['О клубе', 'Турниры', 'Расписание', 'Участники'].map((item) => (
-            <li key={item}>
+          {[
+            { name: 'О клубе', link: '/about' },
+            { name: 'Турниры', link: '/tournaments' },
+            { name: 'Расписание', link: '/schedule' },
+            { name: 'Участники', link: '/participants' }
+          ].map((item) => (
+            <li key={item.name}>
               <a
-                href={`#${item.toLowerCase()}`}
+                href={item.link}
                 className="text-white hover:text-red-400 transition-colors duration-300"
               >
-                {item}
+                {item.name}
               </a>
             </li>
           ))}
@@ -60,7 +63,7 @@ const ChessClub = () => {
             Добро пожаловать в Шахматный клуб ВА
           </h2>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto">
-          Дегенерируйте играя шахматы
+            Дегенерируйте играя шахматы
           </p>
         </div>
       </section>
